@@ -1,0 +1,25 @@
+body{
+    margin: 0px;
+}
+
+.layouts_sideMenu_div_button{
+    display: none;
+    font-size: 150%;
+}
+
+.layouts_sideMenu_div{
+    /* display: none; */
+    background-color: rgba(0, 0, 0, 0.9);
+    width: 1%;
+    max-width: 50%;
+    height: 100vh;
+    resize: horizontal;
+    overflow: auto;
+    transition: width 0.3s ease;
+
+    color: aliceblue;
+}
+
+.layouts_sideMenu_div:hover {
+    width: 70vh !important;
+}
