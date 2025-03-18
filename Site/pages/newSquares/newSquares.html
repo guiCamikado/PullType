@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<!-- A ideia é:
+    Um app de notação, em resumo se tem uma página e nessa página se tem 1 linha de input.
+    Ao clicar no botão direito da linha se deve abrir um menu de opções sendo elas:
+        Texto
+        Titulo <h3/h2/h1>
+        Adicionar imagem
+        Redimensionar...
+        etc.... ver funcionalidades depois
+        a questão é que cada objeto ao clicar em cima poderá ser editado. (Ver se tem alguma api de edição de texto na internet.)
+-->
+
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+    }
+
+    .square-container {
+        position: relative;
+        /* width: 50%;
+        height: 50%; */
+    }
+
+    .root_square {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: rgb(32, 32, 32);
+        width: 50vh;
+        height: 50vh;
+    }
+</style>
+
+<body>
+    <div class="square-container">
+        <div id="rootSquare" class="root_square"></div>
+    </div>
+</body>
+
+<script>
+    let centralDiv = document.getElementById("rootSquare")
+    centralDiv.addEventListener("click", openMenu)
+
+
+
+    function openMenu() {
+        // Abre um menu de configuração com diversas opções (No momento focado em criar um novo quadrado)
+        console.log("Teste");
+    }
+
+    function newSquare(params) {
+        function newRightSquare() { }
+        function newLeftSquare() { }
+        function newTopSquare() { }
+        function newBottomSquare() { }
+    }
+
+
+</script>
+
+</html>
