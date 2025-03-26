@@ -50,3 +50,4 @@ class SQLFunctions:
         else:
             print(f"Table '{table_name}' not found!")
     getColumnNames('database.db', 'TABELA_INTRODUCAO')
+    getColumnNames('database.db', 'TABELA_DADOS')
