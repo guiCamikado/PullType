@@ -6,7 +6,7 @@ class SQLCRUD:
        conn = sqlite3.connect(dbPath)
        cur = conn.cursor()
 
-        values = ""
+        values = " "
         
         for element in array:
             if values:
