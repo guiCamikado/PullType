@@ -53,7 +53,7 @@ function goToMainPage() {
     window.location.href = mainUrl;
 }
 
-//Obtem o layout no menu a cima
+includeTopMenuHTMLAjax()
 function includeTopMenuHTMLAjax() {
     var z, i, element, file, xhttp;
     z = document.getElementsByTagName("*");
