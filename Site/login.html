@@ -9,122 +9,12 @@
     <script src="https://accounts.google.com/gsi/client" async defer></script>
 
     <link rel="stylesheet" href="css/style.css">
-    <script src=""></script>
+    <link rel="stylesheet" href="css/login.css">
+    <script src="javaScript/login.js"></script>
     <title>Document</title>
 </head>
 <style>
-    .loginController {
-        margin-top: 7vw;
-        display: flex;
-        justify-content: center;
-    }
 
-    .loginController_inside {
-        padding: 3vw;
-        background-color: #212121;
-        border-radius: 2.5%;
-    }
-
-    .input-group {
-        position: relative;
-    }
-
-    .input {
-        border: solid 1.5px #9e9e9e;
-        border-radius: 1rem;
-        background: none;
-        padding: 1rem;
-        font-size: 1rem;
-        color: #f5f5f5;
-        transition: border 150ms cubic-bezier(0.4, 0, 0.2, 1);
-        width: 25vw;
-    }
-
-    .user-label {
-        position: absolute;
-        left: 15px;
-        color: #e8e8e8;
-        pointer-events: none;
-        transform: translateY(1rem);
-        transition: 150ms cubic-bezier(0.4, 0, 0.2, 1);
-        width: auto;
-
-    }
-
-    .input:focus,
-    input:valid {
-        outline: none;
-        border: 1.5px solid #1a73e8;
-    }
-
-    .input:focus~label,
-    input:valid~label {
-        transform: translateY(-50%) scale(0.8);
-        background-color: #212121;
-        padding: 0 .2em;
-        color: #2196f3;
-    }
-
-    .ainda_nao_possui_conta {
-        font-size: 0.8rem;
-    }
-
-    .form-control {
-        font-family: system-ui, sans-serif;
-        font-size: 2rem;
-        font-weight: bold;
-        line-height: 1.1;
-        grid-template-columns: 1em auto;
-        gap: 0.5em;
-    }
-
-    .lembrar_de_mim {
-        font-size: 0.8rem;
-    }
-
-    button {
-        --primary-color: #e71c1c;
-        --secondary-color: #fff;
-        --hover-color: #c41b1b;
-        border: 0;
-        border-radius: 20px;
-        color: var(--secondary-color);
-        padding: 2.5%;
-        background: var(--primary-color);
-        transition: 0.1s background;
-        font-weight: bold;
-        margin-bottom: 0.5vw;
-        width: 25vw;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    button .arrow::before {
-        content: "";
-        box-sizing: border-box;
-        position: absolute;
-        border: solid var(--secondary-color);
-        border-width: 0 var(--arrow-stroke) var(--arrow-stroke) 0;
-        display: inline-block;
-        top: -3px;
-        right: 3px;
-        transition: 0.2s;
-        padding: 3px;
-        transform: rotate(-45deg);
-    }
-
-    button:hover {
-        background-color: var(--hover-color);
-    }
-
-    button:hover .arrow {
-        background: var(--secondary-color);
-    }
-
-    button:hover .arrow:before {
-        right: 0;
-    }
 </style>
 
 <body>
@@ -142,7 +32,8 @@
                 </p>
                 <div class="input-group">
                     <input required="" type="text" name="text" autocomplete="off" class="input">
-                    <label class="user-label">Email ou Usuário</label>
+                    <label class="user-label">Usuário ou Email</label>
+                    <img src="images/mail.png" alt="" srcset="" class="passwordHideShow">
                 </div>
                 </p>
             </div>
@@ -151,61 +42,59 @@
             <div class="login_and_Password">
                 <p>
                 <div class="input-group">
-                    <input required="" type="password" name="text" autocomplete="on" class="input">
-                    <label class="user-label">Senha</label>
+                    <div>
+                        <input required="" type="password" name="text" autocomplete="on" class="input"
+                            id="showHideInput">
+                        <label class="user-label">Senha</label>
+                        <img src="images/hide.png" class="passwordHideShow" id="showHideIcon"
+                            onclick="changesShowHideButton(this)">
+                    </div>
                 </div>
                 </p>
             </div>
-
-
             <div>
                 <div class="lembrar_de_mim">
                     <p><input type="checkbox" class="form-control" id="checkbox_input_camp">Lembrar a próxima vez em que
-                        eu
-                        logar</p>
+                        acessar este site</p>
                 </div>
                 <div>
-                    <button> Entrar </button>
+                    <button class="EntrarButton"> Entrar </button>
                 </div>
-                
                 <div>
-                    <div id="g_id_onload" data-client_id="YOUR_GOOGLE_CLIENT_ID"
-                        data-login_uri="https://your.domain/your_login_endpoint" data-auto_prompt="false">
-                    </div>
-                    <div class="g_id_signin" data-type="standard" data-size="large" data-theme="outline"
-                        data-text="sign_in_with" data-shape="rectangular" data-logo_alignment="left">
-                    </div>
+                    <button class="gsi-material-button">
+                        <div class="gsi-material-button-state"></div>
+                        <div class="gsi-material-button-content-wrapper">
+                            <div class="gsi-material-button-icon">
+                                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"
+                                    xmlns:xlink="http://www.w3.org/1999/xlink" style="display: block;">
+                                    <path fill="#EA4335"
+                                        d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z">
+                                    </path>
+                                    <path fill="#4285F4"
+                                        d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z">
+                                    </path>
+                                    <path fill="#FBBC05"
+                                        d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z">
+                                    </path>
+                                    <path fill="#34A853"
+                                        d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z">
+                                    </path>
+                                    <path fill="none" d="M0 0h48v48H0z"></path>
+                                </svg>
+                            </div>
+                            <span class="gsi-material-button-contents">Sign in with Google</span>
+                            <span style="display: none;">Sign in with Google</span>
+                        </div>
+                    </button>
                 </div>
             </div>
 
-
-
             <div class="ainda_nao_possui_conta">
-                <p>Ainda não está no pullType? <a href="#CriarConta">Crie uma conta</a></p>
+                <p>Ainda não está no pullType? Crie uma conta <a href="register.html">Clicando Aqui</a>!</p>
+                <p>Ler Termos de serviço <a href="">Aqui</a>!</p>
             </div>
         </div>
     </div>
-
-    <script src="https://accounts.google.com/gsi/client" async></script>
-    <script>
-        function handleCredentialResponse(response) {
-            console.log("Encoded JWT ID token: " + response.credential);
-        }
-        window.onload = function () {
-            google.accounts.id.initialize({
-                client_id: "YOUR_GOOGLE_CLIENT_ID"
-          callback: handleCredentialResponse
-            });
-            google.accounts.id.renderButton(
-                document.getElementById("buttonDiv"),
-                { theme: "outline", size: "large" }  // customization attributes
-            );
-            google.accounts.id.prompt(); // also display the One Tap dialog
-        }
-    </script>
-
 </body>
-
-
 
 </html>

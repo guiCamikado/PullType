@@ -1,0 +1,97 @@
+<!-- 31-03-2025 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="layouts/topMenu/menu.js"></script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/register.css">
+    <script defer src="javaScript/register.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="sweetalert2.min.css">
+
+    <title>Document</title>
+</head>
+<style>
+
+</style>
+
+<body>
+    <div topMenu="layouts/topMenu/TopMenu.html"></div>
+    <script>includeTopMenuHTMLAjax()</script>
+
+    <!-- Essa é a página de Registro. " -->
+    <div id="loginController" class="loginController">
+        <div class="loginController_inside">
+            <div class="loginController_inside-welcome">
+                <img src="" alt="PullTypeIcon">
+                <h2>Bem-vindo(a) ao PullType</h2>
+                <p>Crie e explore guias feitos para você</p>
+            </div>
+
+
+            <div class="login_and_password">
+                <div class="input-group-register">
+                    <input required="" type="text" name="text" autocomplete="off" class="input">
+                    <label class="user-label"><b class="input-group-register-must-write">*</b> Usuário</label>
+                </div>
+
+                <div class="input-group-register">
+                    <input required="" type="email" name="text" autocomplete="off" class="input">
+                    <label class="user-label"><b class="input-group-register-must-write">*</b> Email</label>
+                </div>
+
+                <div class="input-group-register">
+                    <input required="" type="text" name="text" autocomplete="off" class="input">
+                    <label class="user-label"><b class="input-group-register-must-write">*</b> Nome</label>
+                </div>
+
+                <div class="input-group-register">
+                    <input required="" type="text" name="text" autocomplete="off" class="input">
+                    <label class="user-label"><b class="input-group-register-must-write">*</b> Sobrenome</label>
+                </div>
+
+
+                <div class="input-group-register">
+                    <input required="" type="password" name="text" autocomplete="off" class="input" id="password">
+                    <label class="user-label"><b class="input-group-register-must-write">*</b> Senha</label>
+                </div>
+
+                <div class="input-group-register">
+                    <input required="" type="password" name="text" autocomplete="off" class="input"
+                        id="password-confirmation">
+                    <label class="user-label" id="password-confirmation"><b
+                            class="input-group-register-must-write">*</b> Confirmação de senha</label>
+                </div>
+
+                <div class="input-group-register">
+                    <div></div>
+                    <input required="" type="date" name="text" autocomplete="off" class="input">
+                    <!-- <label class="user-label"></label> -->
+                </div>
+
+                <div class="input-group-terms">
+                    <input type="checkbox" name="" id="read-and-accepted"> Li e aceito os <a href="">termos de uso e
+                        serviço</a>.
+                </div>
+
+                <div class="input-group-register-create">
+                    <button class="EntrarButton" onclick="checkPasswordIsEvenButton()"> Criar Conta </button>
+                </div>
+
+                <div class="login_and_Password" id="register-camp">
+                    <form action="">
+                    </form>
+                    <p>
+                </div>
+
+            </div>
+        </div>
+</body>
+
+</html>
