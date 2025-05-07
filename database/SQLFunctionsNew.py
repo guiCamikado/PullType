@@ -1,26 +1,35 @@
 from flask import Flask, jsonify, request
+from flask_cors import CORS
 import sqlite3
 
 app = Flask(__name__)
 
+# Ativa modo debug (desativar em ambiente)
+if __name__ == '__main__':
+    app.run(debug=True, port=5000)
+
+# Prepara dados que chegam
+CORS(app, resources={r"/*": {"origins": "*", 
+                             "allow_headers": ["Content-Type", "Authorization"],
+                             "expose_headers": ["Content-Type", "X-Content-Type-options", "X-Custom-Header"],
+                             "allow_methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"]}})
+
+
 DATABASE_NAME = 'database.db'
 
-@app.route('/teste/t')
-def testIfWorks():
-    return jsonify({"Testando": "um bang aqui"})
-
-
-@app.route('/api/useSql', methods=["POST"])
+# Realiza a conexão do front com o Back por meio de um link /api/useSql
+# Essa conexão é perigosa visto que deixa aberta a edição por parte do user a qualquer tabela do banco de dados. Não utilizar!!!
+@app.route('/api/useSql', methods=['GET', 'POST'])
 def useSQLiteCrud():
+
     data = request.json
     if not data:
         return jsonify({"error": "No data provided"}), 400
-    
+
     sqlAction = data.get('action')
-    if sqlAction not in ['insert', 'read', 'update', 'delete']:
+    if sqlAction not in ['insert', 'select', 'update', 'delete']:
         return jsonify({"error": "Invalid action"}), 400
     
-    # Prepare SQL query parameters
     params = {
         'table': data.get('tableName'),
         'where': data.get('where'),
@@ -31,6 +40,7 @@ def useSQLiteCrud():
         conn = sqlite3.connect(DATABASE_NAME)
         cur = conn.cursor()
         
+        # INSERT
         if sqlAction == 'insert':
             placeholders = ', '.join(['?' for _ in range(len(params['data']))])
             sql = f"INSERT INTO {params['table']} VALUES ({placeholders})"
@@ -38,7 +48,8 @@ def useSQLiteCrud():
             conn.commit()
             return jsonify({"message": "Record inserted successfully"}), 201
         
-        elif sqlAction == 'read':
+        # SELECT
+        elif sqlAction == 'select':
             sql = f"SELECT * FROM {params['table']}"
             if params['where']:
                 sql += f" WHERE {params['where']}"
@@ -47,6 +58,7 @@ def useSQLiteCrud():
             result = cur.fetchall()
             return jsonify({"result": result}), 200
         
+        # UPDATE
         elif sqlAction == 'update':
             placeholders = ', '.join(['?' for _ in range(len(params['data'][0]))])
             sql = f"UPDATE {params['table']} SET {', '.join([f'{key}=?' for key in params['data'][0]])} WHERE {params['where']}"
@@ -54,6 +66,7 @@ def useSQLiteCrud():
             conn.commit()
             return jsonify({"message": "Record updated successfully"}), 200
         
+        # DELETE
         elif sqlAction == 'delete':
             sql = f"DELETE FROM {params['table']}"
             if params['where']:
@@ -77,9 +90,10 @@ if __name__ == '__main__':
 @app.route('/api/example-insert')
 def example_insert():
     data = {
+        "tablename": "TABELA_CONTAS",
         "action": "insert",
         "where": "",
-        "data": [["nome", "email"], ["John Doe", "john@example.com"]]
+        "data": [["user", "email"], ["John Doe", "john@example.com"]]
     }
     response = useSQLiteCrud(data)
     return jsonify({"result": response})
@@ -88,7 +102,7 @@ def example_insert():
 @app.route('/api/example-read')
 def example_read():
     data = {
-        "action": "read",
+        "action": "select",
         "where": ""
     }
     response = useSQLiteCrud(data)

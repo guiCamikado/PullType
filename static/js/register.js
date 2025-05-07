@@ -75,6 +75,5 @@ function sweetAlertProblem(problema) {
     Swal.fire({
       icon: "error",
       text: problema,
-      footer: "Passwords must be at least eight (8) characters long and include at least one uppercase letter, one lowercase letter, and one special character."
     });
 }
