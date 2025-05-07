@@ -53,7 +53,6 @@ function goToMainPage() {
     window.location.href = mainUrl;
 }
 
-includeTopMenuHTMLAjax()
 function includeTopMenuHTMLAjax() {
     var z, i, element, file, xhttp;
     z = document.getElementsByTagName("*");
