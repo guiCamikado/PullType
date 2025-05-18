@@ -1,0 +1,1 @@
+# Funções que realizam operações no banco de dados para Usuários. 

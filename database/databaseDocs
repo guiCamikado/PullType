@@ -1,2 +1,0 @@
-TABELA_INTRODUCAO(titulo, autor, data_criacao)
-TABELA_DADOS(id_guia_vinculado, version, mod_name, mod_data, content)

@@ -1,0 +1,55 @@
+[33mcommit 23850ff17a2823b58b81fd3ef1ecdacd308823b2[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: MykyBalb <mykaelbalbino06@gmail.com>
+Date:   Wed May 7 17:21:12 2025 -0300
+
+    Adicionado correções após refatoração da página e links via flask
+
+[33mcommit 9373587efab09867b3d2733ec6be6dcabed3edaf[m
+Author: MykyBalb <mykaelbalbino06@gmail.com>
+Date:   Wed May 7 15:09:34 2025 -0300
+
+    refactoring of the folder structure of the project A LOT OF BUGS WILL APPEAR!!!
+
+[33mcommit 1142535b16287cb16c1e3c46cc954ce5ac0ecb9a[m
+Author: MykyBalb <mykaelbalbino06@gmail.com>
+Date:   Wed Apr 9 13:49:05 2025 -0300
+
+    Beta 1.0.3 31-Mar-2025 Login and Register front page)
+
+[33mcommit 8f2de74c8312f653561378cf92b1b447f29b3577[m
+Author: Guilherme A. Camikado <guilherme.camikado@gmail.com>
+Date:   Mon Mar 31 21:15:18 2025 -0300
+
+    Beta 1.0.2 31-Mar-2025 (Login Page Beta)
+
+[33mcommit 3e0a5ccb3ce1f09816fd04fd5665bc4467daf390[m
+Author: MykyBalb <mykaelbalbino06@gmail.com>
+Date:   Wed Mar 26 15:07:39 2025 -0300
+
+    Version 1.0.1 - 26-03-2025 (added some flask in test)
+
+[33mcommit 02a1d9962a7a99e3094d52955e66b63c55f80b5a[m
+Author: MykyBalb <mykaelbalbino06@gmail.com>
+Date:   Wed Mar 26 14:18:23 2025 -0300
+
+    Beta 1.0.1 01-Mar-2025 (SLQ Functions Beta)
+
+[33mcommit f19497c849096e55a9ed11365d25e8515221a566[m
+Author: MykyBalb <mykaelbalbino06@gmail.com>
+Date:   Tue Mar 18 14:12:02 2025 -0300
+
+    Beta 1.0.1 01-Dez - 2025 (CRUD and Tests)
+
+[33mcommit 94a8bbe55ad9556cba1dde06769a784b0ae717d0[m
+Author: Guilherme Andrade Camikado <guilherme.camikado@gmail.com>
+Date:   Wed Mar 5 16:45:15 2025 -0300
+
+    Beta 1.0.0 01-Dez-2024
+    
+    Added the first archives on the project
+
+[33mcommit 3944577b0099cfca0ee3b64aff5830a5e1aa4cb3[m
+Author: Guilherme Andrade Camikado <guilherme.camikado@gmail.com>
+Date:   Wed Mar 5 16:35:27 2025 -0300
+
+    Initial commit
