@@ -8,7 +8,7 @@ UserRegistration = Blueprint('UserRegistration', __name__)
 def sendRegistrationRequest():
     data = request.get_json()  # Recebe os dados enviados em JSON
 
-    # Exemplo de extração dos dados
+    # Dados
     usuario = data.get("usuario")
     email = data.get("email")
     nome = data.get("nome")
@@ -17,26 +17,33 @@ def sendRegistrationRequest():
     confirmar_senha = data.get("confirmarSenha")
     data_nascimento = data.get("dataNascimento")
     termos_aceitos = data.get("termosAceitos")
+    token = generateRecoveryToken()
 
-    # Aqui você adiciona os dados no seu banco de dados SQLite
-    # Exemplo fictício:
-    # db.insert_usuario(nome, sobrenome, email, senha...)
+    if senha != confirmar_senha:
+        return jsonify({"message": "Senhas não coincidem!"}), 200
 
-    # Criar lógica de criar banco de dados se não existir
-    # Se existir verificar se usuário ou Email já consta no banco de dados
-    # Se usuário não constar no DB inserir usuário e confirmar registro
+    createTableIfNotExist()
+    if checkUserValidation(usuario):
+        print("if1")
+        if checkEmailValidation(email):
+            insertIntoDataBase(usuario, email, nome, sobrenome, senha, data_nascimento, token)
+            print ("If2")
+            return jsonify({"message": "Usuário registrado com sucesso!"}), 200
+        
+        else:
+            print("if3")
+            return jsonify({"message":"Email já registrado!"}), 200
+    else:
+        print("if4")
+        return jsonify({"message":"Usuário já registrado!"}), 200
 
-    return jsonify({"message": "Usuário registrado com sucesso!"}), 200
 
 
-# Cria banco de dados caso o mesmo não exista ou não seja encontrado
+# (WIP) Cria banco de dados caso o mesmo não exista ou não seja encontrado
 def createTableIfNotExist():
     # WIP especificar o local de criação do banco de dados para database/database
     conexao = sqlite3.connect('database.db')
-
-    # Cria um cursor para executar comandos SQL
     cursor = conexao.cursor()
-
     # Cria a tabela "TABLE_USERS" que faz referencias aos usuários
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS TABLE_USERS (
@@ -58,15 +65,63 @@ def createTableIfNotExist():
     conexao.commit() # Salva (commit) as alterações
     conexao.close() # Fecha a conexão
 
-#WIP essa função deverá checar se usuário ou e-mail já estão ou não registrados no banco de dados e retornar uma booleana com base nisso
-def checkValidation():
-    return ""
+# Conferem se usuário ou e-mail existem no banco de dados
+def checkUserValidation(username):
+    existsInDataBase = True
+
+    connection = sqlite3.connect('database.db')
+    cursor = connection.cursor()
+
+    cursor.execute("SELECT COUNT(*) FROM TABLE_USERS WHERE username = ?", (username,))
+
+    result = cursor.fetchone()
+    
+    if result[0] > 0:
+        existsInDataBase = False
+    
+    connection.close()
+    return existsInDataBase
+def checkEmailValidation(email):
+    existsInDataBase = True
+
+    connection = sqlite3.connect('database.db')
+    cursor = connection.cursor()
+
+    cursor.execute("SELECT COUNT(*) FROM TABLE_USERS WHERE email = ?", (email,))
+    result = cursor.fetchone()
+    
+    if result[0] > 0:
+        existsInDataBase = False
+    
+    connection.close()
+    return existsInDataBase
 
 # WIP essa função deverá gerar uma chave de recuperação de senha. A mesma deverá ser executada apenas se a função checkValidation retornar true
 def generateRecoveryToken():
-    token = ""
+
+    import secrets
+    import string
+
+    alfabeto = string.ascii_letters + string.digits # Letras e Num
+    token = ''.join(secrets.choice(alfabeto) for _ in range(16))
     return token
 
 # WIP essa função deve inserir os dados recebidos no banco de dados se todas as validações forem credenciadas.
-def insertIntoDataBase():
-    return ""
+def insertIntoDataBase(usuario, email, nome, sobrenome, senha, data_nascimento, token):
+    conn = sqlite3.connect('database.db')
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        INSERT INTO TABLE_USERS (
+            username,
+            email,
+            name,
+            last_name,
+            password,
+            user_born_in,
+            recovery_key
+        ) VALUES (?, ?, ?, ?, ?, ?, ?)
+    """, (usuario, email, nome, sobrenome, senha, data_nascimento, token,))
+
+    conn.commit()
+    conn.close()
