@@ -1,1 +1,0 @@
-# Define a estrutura da tabela de Usuário com id, nome, e email. 
