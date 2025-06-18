@@ -5,7 +5,6 @@ pages = Blueprint('flask_pages', __name__)
 
 @pages.route('/')
 def index():
-    print(pages.patch()) #Testando
     return render_template('pages/index.html')
 
 @pages.route('/<path:path>')
