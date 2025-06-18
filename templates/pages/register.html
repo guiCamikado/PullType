@@ -34,64 +34,61 @@
                 <p>Crie e explore guias feitos para você</p>
             </div>
 
+            <form onsubmit="submitRegistration(event)">
+                <div class="login_and_password">
+                    <div class="input-group-register">
+                        <input required="" type="text" name="text" autocomplete="off" class="input">
+                        <label class="user-label"><b class="input-group-register-must-write">*</b> Usuário</label>
+                    </div>
 
-            <div class="login_and_password">
-                <div class="input-group-register">
-                    <input required="" type="text" name="text" autocomplete="off" class="input">
-                    <label class="user-label"><b class="input-group-register-must-write">*</b> Usuário</label>
-                </div>
+                    <div class="input-group-register">
+                        <input required="" type="email" name="text" autocomplete="off" class="input">
+                        <label class="user-label"><b class="input-group-register-must-write">*</b> Email</label>
+                    </div>
 
-                <div class="input-group-register">
-                    <input required="" type="email" name="text" autocomplete="off" class="input">
-                    <label class="user-label"><b class="input-group-register-must-write">*</b> Email</label>
-                </div>
+                    <div class="input-group-register">
+                        <input required="" type="text" name="text" autocomplete="off" class="input">
+                        <label class="user-label"><b class="input-group-register-must-write">*</b> Nome</label>
+                    </div>
 
-                <div class="input-group-register">
-                    <input required="" type="text" name="text" autocomplete="off" class="input">
-                    <label class="user-label"><b class="input-group-register-must-write">*</b> Nome</label>
-                </div>
-
-                <div class="input-group-register">
-                    <input required="" type="text" name="text" autocomplete="off" class="input">
-                    <label class="user-label"><b class="input-group-register-must-write">*</b> Sobrenome</label>
-                </div>
+                    <div class="input-group-register">
+                        <input required="" type="text" name="text" autocomplete="off" class="input">
+                        <label class="user-label"><b class="input-group-register-must-write">*</b> Sobrenome</label>
+                    </div>
 
 
-                <div class="input-group-register">
-                    <input required="" type="password" name="text" autocomplete="off" class="input" id="password">
-                    <label class="user-label"><b class="input-group-register-must-write">*</b> Senha</label>
-                </div>
+                    <div class="input-group-register">
+                        <input required="" type="password" name="text" autocomplete="off" class="input" id="password">
+                        <label class="user-label"><b class="input-group-register-must-write">*</b> Senha</label>
+                    </div>
 
-                <div class="input-group-register">
-                    <input required="" type="password" name="text" autocomplete="off" class="input"
-                        id="password-confirmation">
-                    <label class="user-label" id="password-confirmation"><b
-                            class="input-group-register-must-write">*</b> Confirmação de senha</label>
-                </div>
+                    <div class="input-group-register">
+                        <input required="" type="password" name="text" autocomplete="off" class="input"
+                            id="password-confirmation">
+                        <label class="user-label" id="password-confirmation"><b
+                                class="input-group-register-must-write">*</b> Confirmação de senha</label>
+                    </div>
 
-                <div class="input-group-register">
-                    <div></div>
-                    <input required="" type="date" name="text" autocomplete="off" class="input">
-                    <!-- <label class="user-label"></label> -->
-                </div>
+                    <div class="input-group-register">
+                        <div></div>
+                        <input required="" type="date" name="text" autocomplete="off" class="input">
+                    </div>
 
-                <div class="input-group-terms">
-                    <input type="checkbox" name="" id="read-and-accepted"> Li e aceito os <a href="">termos de uso e
-                        serviço</a>.
-                </div>
+                    <div class="input-group-terms">
+                        <input type="checkbox" name="" id="read-and-accepted"> Li e aceito os <a href="">termos de uso e
+                            serviço</a>.
+                    </div>
 
-                <div class="input-group-register-create">
-                    <button class="EntrarButton" onclick="checkPasswordIsEvenButton()"> Criar Conta </button>
-                </div>
+                    <div class="input-group-register-create">
+                        <button type="submit" class="EntrarButton">Criar Conta</button>
+                    </div>
+                    <div class="login_and_Password" id="register-camp">
+            </form>
 
-                <div class="login_and_Password" id="register-camp">
-                    <form action="">
-                    </form>
-                    <p>
-                </div>
-
-            </div>
+            <p>
         </div>
+    </div>
+    </div>
 </body>
 
 </html>
