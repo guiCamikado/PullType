@@ -1,5 +1,6 @@
 from flask import Blueprint, request, jsonify
 import sqlite3
+import os
 
 UserRegistration = Blueprint('UserRegistration', __name__)
 
@@ -24,17 +25,14 @@ def sendRegistrationRequest():
 
     createTableIfNotExist()
     if checkUserValidation(usuario):
-        print("if1")
         if checkEmailValidation(email):
             insertIntoDataBase(usuario, email, nome, sobrenome, senha, data_nascimento, token)
-            print ("If2")
+            generateUserPaste(usuario)
             return jsonify({"message": "Usuário registrado com sucesso!"}), 200
         
         else:
-            print("if3")
             return jsonify({"message":"Email já registrado!"}), 200
     else:
-        print("if4")
         return jsonify({"message":"Usuário já registrado!"}), 200
 
 
@@ -107,7 +105,7 @@ def generateRecoveryToken():
     return token
 
 # WIP essa função deve inserir os dados recebidos no banco de dados se todas as validações forem credenciadas.
-def insertIntoDataBase(usuario, email, nome, sobrenome, senha, data_nascimento, token):
+def insertIntoDataBase(user, email, nome, sobrenome, senha, data_nascimento, token):
     conn = sqlite3.connect('database.db')
     cursor = conn.cursor()
 
@@ -121,7 +119,20 @@ def insertIntoDataBase(usuario, email, nome, sobrenome, senha, data_nascimento, 
             user_born_in,
             recovery_key
         ) VALUES (?, ?, ?, ?, ?, ?, ?)
-    """, (usuario, email, nome, sobrenome, senha, data_nascimento, token,))
+    """, (user, email, nome, sobrenome, senha, data_nascimento, token,))
 
     conn.commit()
     conn.close()
+
+def generateUserPaste(user):
+    users_dir = os.path.join(os.getcwd(), "users")
+    os.makedirs(users_dir, exist_ok=True)
+    
+    full_path = os.path.join(users_dir, user)
+    os.makedirs(full_path, exist_ok=True)
+    
+    image_dir = os.path.join(full_path, "image")
+    os.makedirs(image_dir, exist_ok=True)
+    
+    guides_dir = os.path.join(full_path, "guides")
+    os.makedirs(guides_dir, exist_ok=True)

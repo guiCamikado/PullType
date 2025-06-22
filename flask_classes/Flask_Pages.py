@@ -25,5 +25,4 @@ def server_menu_html(path):
 
 @pages.route("/layouts/topMenu/<path:path>")
 def server_menu_css(path):
-    print(path)
     return send_from_directory("templates/layouts/topMenu", path)
