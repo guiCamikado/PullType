@@ -1,0 +1,7 @@
+05/07/2025
+Today I worked on the login files.
+The pages weren’t working the way I intended no matter what I input into the login, it always returned "ok" instead of "not okay" even when the credentials didn’t exist. So I fixed it to return an true or false from the back-end to the front-end, and in the future I’ll use this to successfully log into an account.
+
+Other stuff I noticed and will try to fix is the slowness when loading a page. I realized I was using a function send_from_directory instead of render_template, which ended up making the website load sooo slow.
+
+That it for today 😅

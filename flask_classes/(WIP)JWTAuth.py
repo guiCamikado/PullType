@@ -3,7 +3,7 @@
 '''
 
 import jwt
-key = "senha_12dwadawd3"
+key = "v#7Pq@Lz!fT9r*Wd"
 payload = {}
 
 def sendJWT():

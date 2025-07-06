@@ -13,6 +13,14 @@
     <script src="../static/js/login.js"></script>
     <title>Document</title>
 </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Scripts que são arquivos estáticos seus devem estar dentro da pasta /static -->
+    <script src="{{ url_for('static', filename='layouts/topMenu/menu.js') }}"></script>
+
+</head>
 <style>
 
 </style>
@@ -54,9 +62,10 @@
 
                 <div>
                     <div class="lembrar_de_mim">
-                        <p><input type="checkbox" class="form-control" id="checkbox_input_camp">Lembrar a próxima vez em
-                            que
-                            acessar este site</p>
+                        <p>
+                            <input type="checkbox" class="form-control" id="checkbox_input_camp">Lembrar a próxima vez
+                            em que acessar este site
+                        </p>
                     </div>
                     <div>
                         <button class="EntrarButton" type="submit"> Entrar </button>

@@ -15,43 +15,37 @@ UserLogin = Blueprint('UserLogin', __name__)
 
 @UserLogin.route('/DBAction/sendLoginRequest', methods=['POST'])
 def sendLoginRequest():
-    # data = request.get_json()
+    
     # Dados
-    # login = data.get("login")
-    # senha = data.get("senha")
+    data = request.get_json()
+    databaseCheckup = data.get("login")
+    senha = data.get("senha")
+    databaseCheckup = checkLogin(databaseCheckup, senha)
 
-    # Teste
-    login = "teste"
-    senha = "teste"
-
-    checkLogin(login, senha)
+    if databaseCheckup:
+        #If login is a success
+        return jsonify({"success": True}), 200
+    else:
+        #If login is unsuccessful
+        return jsonify({"success": False}), 200
 
 
 # Confere se usuário ou email existem no banco e se senha está correta retornando um True ou False
 def checkLogin(login, senha):
+    with sqlite3.connect('database.db') as conn:
+        cursor = conn.cursor()
+        cursor.execute("""
+            SELECT password FROM TABLE_USERS 
+            WHERE username = ? OR email = ?
+        """, (login, login))
+        
+        result = cursor.fetchone()
 
-    loginConfirmation = False
-    conn = sqlite3.connect('database.db')
-    cursor = conn.cursor()
-
-    password = senha.encode('utf-8')
-    password = bcrypt.hashpw(password, bcrypt.gensalt())
-    print(password)
-
-    cursor.execute("""
-    SELECT COUNT(*) FROM TABLE_USERS WHERE 
-                username = ? OR
-                email = ? AND
-                password = ?
-""", (login, login, password,))
-    
-    result = cursor.fetchone()
-
-    if result[0] > 0:
-        loginConfirmation = True
-
-    conn.close()
-    return loginConfirmation
-
-
-sendLoginRequest()
+    if result:
+        stored_hash = result[0]
+        print(stored_hash)
+        print(senha)
+        print(bcrypt.checkpw(senha.encode('utf-8'), stored_hash.encode('utf-8')))
+        return bcrypt.checkpw(senha.encode('utf-8'), stored_hash.encode('utf-8'))
+    else:
+        return False

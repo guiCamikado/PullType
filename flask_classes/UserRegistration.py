@@ -136,7 +136,7 @@ def insertIntoDataBase(user, email, nome, sobrenome, senha, data_nascimento, tok
 def returnHash(password):
     password = password.encode('utf-8')
     password = bcrypt.hashpw(password, bcrypt.gensalt())
-    return password
+    return password.decode('utf-8')
 
 # Gera pastas base do user
 def generateUserPaste(user):
