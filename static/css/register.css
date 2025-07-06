@@ -1,3 +1,9 @@
+body{
+    background-color: #363636;
+    color: white;
+    font-size: 18px;
+}
+
 .loginController {
     margin-top: 1vw;
     display: flex;
@@ -265,4 +271,11 @@ input:valid~label {
 .passwordHideShow {
     width: 1.5em;
     filter: invert(85%)
+}
+
+/* Post registe */
+.post_register_message{
+    color: white;
+    text-align: center;
+    background-color: #1b1b1b;
 }

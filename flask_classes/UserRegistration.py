@@ -1,6 +1,10 @@
+''' Esse código recebe dados da página de registro para registrar um novo usuário, junto disso ele verifica se o usuário ou e-mail já
+    existem na base de dados antes de fazer a inserção'''
+
 from flask import Blueprint, request, jsonify
 import sqlite3
 import os
+import bcrypt
 
 UserRegistration = Blueprint('UserRegistration', __name__)
 
@@ -37,7 +41,7 @@ def sendRegistrationRequest():
 
 
 
-# (WIP) Cria banco de dados caso o mesmo não exista ou não seja encontrado
+# Cria banco de dados caso o mesmo não exista ou não seja encontrado
 def createTableIfNotExist():
     # WIP especificar o local de criação do banco de dados para database/database
     conexao = sqlite3.connect('database.db')
@@ -62,7 +66,6 @@ def createTableIfNotExist():
 
     conexao.commit() # Salva (commit) as alterações
     conexao.close() # Fecha a conexão
-
 # Conferem se usuário ou e-mail existem no banco de dados
 def checkUserValidation(username):
     existsInDataBase = True
@@ -101,7 +104,7 @@ def generateRecoveryToken():
     import string
 
     alfabeto = string.ascii_letters + string.digits # Letras e Num
-    token = ''.join(secrets.choice(alfabeto) for _ in range(16))
+    token = ''.join(secrets.choice(alfabeto) for _ in range(5))
     return token
 
 # WIP essa função deve inserir os dados recebidos no banco de dados se todas as validações forem credenciadas.
@@ -119,11 +122,23 @@ def insertIntoDataBase(user, email, nome, sobrenome, senha, data_nascimento, tok
             user_born_in,
             recovery_key
         ) VALUES (?, ?, ?, ?, ?, ?, ?)
-    """, (user, email, nome, sobrenome, senha, data_nascimento, token,))
+    """, (  user,
+            email,
+            nome,
+            sobrenome,
+            returnHash(senha),
+            data_nascimento,
+            token,))
 
     conn.commit()
     conn.close()
+# Retorna Hash com base no algoritmo de Niels Provos e David Mazières
+def returnHash(password):
+    password = password.encode('utf-8')
+    password = bcrypt.hashpw(password, bcrypt.gensalt())
+    return password
 
+# Gera pastas base do user
 def generateUserPaste(user):
     users_dir = os.path.join(os.getcwd(), "users")
     os.makedirs(users_dir, exist_ok=True)
