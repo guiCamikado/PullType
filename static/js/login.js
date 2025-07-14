@@ -3,13 +3,17 @@
 
 document.addEventListener('click', function (event) {
     if (event.target.id === "showHideIcon") {
-        var iconSrc = event.target.src;
-        if (iconSrc.includes("hide.png")) {
-            event.target.src = "images/show.png";
-            document.getElementById("showHideInput").type = "text";
+        const icon = event.target;
+        const showSrc = icon.dataset.showSrc;
+        const hideSrc = icon.dataset.hideSrc;
+        const input = document.getElementById("showHideInput");
+
+        if (icon.src.includes("hide.png")) {
+            icon.src = showSrc;
+            input.type = "text";
         } else {
-            event.target.src = "images/hide.png";
-            document.getElementById("showHideInput").type = "password";
+            icon.src = hideSrc;
+            input.type = "password";
         }
     }
 });

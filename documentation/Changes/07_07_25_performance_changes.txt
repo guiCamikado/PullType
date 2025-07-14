@@ -1,0 +1,7 @@
+07/07/2025
+There was a thing that was getting me a little pissed off, All the pages that I oppened usually where taking 7 to 9 seconds to load, even when the content was just an menu and a text.
+So i decided to discover what was happening, ended up that I was using in the flask aplication the method "send_from_directory" instead of "render_template".
+
+what happens is that when you use send_from_directory you do not use the user chached memory taking speed advantages and to worse things up everytime that an user makes an requisition its needed from the server the entire work of getting everything to run into the front-end.
+
+So today, I fixed and refactored a lot of itens. The top menu is now on cache, and the pages that were taking 7 to 9 seconds to load and reload are now loading in miliseconds (sometimes) and I added an favicon that's it for today.

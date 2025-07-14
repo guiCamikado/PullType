@@ -5,29 +5,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="/templates/layouts/topMenu/menu.js"></script>
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
-
-    <link rel="stylesheet" href="../static/css/style.css">
-    <link rel="stylesheet" href="../static/css/login.css">
-    <script src="../static/js/login.js"></script>
     <title>Document</title>
-</head>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Scripts que são arquivos estáticos seus devem estar dentro da pasta /static -->
     <script src="{{ url_for('static', filename='layouts/topMenu/menu.js') }}"></script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
 
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}"> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css')}}">
+    <script src="{{ url_for('static', filename='js/login.js') }}"></script>
 </head>
 <style>
 
 </style>
 
 <body>
-    <div topMenu="../templates/layouts/topMenu/TopMenu.html"></div>
-    <script>includeTopMenuHTMLAjax()</script>
+    {% include "layouts/topMenu/TopMenu.html" %}
 
     <!-- Essa é a página de login ela deve ter campos sendo eles "Usuário, Senha, Lembrar de mim ao lado do lembrar de mim deve-se ter um simbolo ? que ao passar em cima mostra para que o lembrar de mim serve. Outro botão com "Esqueci a senha" e "Esqueci usuário". " -->
 
@@ -40,7 +33,9 @@
                     <div class="input-group">
                         <input required="" type="text" name="text" autocomplete="off" class="input">
                         <label class="user-label">Usuário ou Email</label>
-                        <img src="../static/images/mail.png" alt="" srcset="" class="passwordHideShow">
+                        <img src="{{ url_for('static', filename='images/mail.png')}}" class="passwordHideShow"
+                            id="showHideIcon">
+
                     </div>
                     </p>
                 </div>
@@ -52,8 +47,12 @@
                             <input required="" type="password" name="text" autocomplete="on" class="input"
                                 id="showHideInput">
                             <label class="user-label">Senha</label>
-                            <img src="../static/images/hide.png" class="passwordHideShow" id="showHideIcon"
-                                onclick="changesShowHideButton(this)">
+
+                            <img id="showHideIcon" src="{{ url_for('static', filename='images/hide.png') }}"
+                                class="passwordHideShow"
+                                data-show-src="{{ url_for('static', filename='images/show.png') }}"
+                                data-hide-src="{{ url_for('static', filename='images/hide.png') }}"
+                                alt="Toggle password visibility">
                         </div>
                     </div>
                     </p>
@@ -100,7 +99,7 @@
                 </div>
             </form>
             <div class="ainda_nao_possui_conta">
-                <p>Ainda não está no pullType? Crie uma conta <a href="register.html">Clicando Aqui</a>!</p>
+                <p>Ainda não está no pullType? Crie uma conta <a href="register">Clicando Aqui</a>!</p>
                 <p>Ler Termos de serviço <a href="">Aqui</a>!</p>
             </div>
         </div>

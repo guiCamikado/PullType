@@ -1,0 +1,9 @@
+{
+  "nome": "Guilherme",
+  "apelidos": ["Gui", "Guh"],
+  "bio": "Guilherme é um programador criativo e determinado, conhecido por sua habilidade em resolver problemas complexos com soluções elegantes. Apaixonado por tecnologia desde cedo, ele mergulhou no mundo da programação e nunca mais parou. Quando não está codando, está aprendendo algo novo ou ajudando outros desenvolvedores na comunidade.",
+  "links_externos": [
+    "https://github.com/guilherme-dev",
+    "https://www.linkedin.com/in/guilherme-dev"
+  ]
+}

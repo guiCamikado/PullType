@@ -5,16 +5,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="../templates/layouts/topMenu/menu.js"></script>
+    <script src="{{ url_for('static', filename='layouts/topMenu/menu.js')}}"></script>
     <script src="https://accounts.google.com/gsi/client" async defer></script>
+    
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/register.css')}}">
 
-    <link rel="stylesheet" href="../static/css/style.css">
-    <link rel="stylesheet" href="../static/css/register.css">
-    <script defer src="../static/js/register.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <!-- <script src="sweetalert2.min.js"></script> -->
-    <!-- <link rel="stylesheet" href="sweetalert2.min.css"> -->
-
+    <script defer src="{{ url_for('static',filename='js/register.js')}}"></script>
     <title>Document</title>
 </head>
 <style>
@@ -22,8 +19,7 @@
 </style>
 
 <body>
-    <div topMenu="../templates/layouts/topMenu/TopMenu.html"></div>
-    <script>includeTopMenuHTMLAjax()</script>
+    {% include "layouts/topMenu/TopMenu.html" %}
 
     <!-- Essa é a página de Registro. " -->
     <div id="loginController" class="loginController">

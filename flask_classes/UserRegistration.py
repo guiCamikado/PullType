@@ -96,7 +96,6 @@ def checkEmailValidation(email):
     
     connection.close()
     return existsInDataBase
-
 # WIP essa função deverá gerar uma chave de recuperação de senha. A mesma deverá ser executada apenas se a função checkValidation retornar true
 def generateRecoveryToken():
 
@@ -140,6 +139,8 @@ def returnHash(password):
 
 # Gera pastas base do user
 def generateUserPaste(user):
+    os.chdir('static')
+
     users_dir = os.path.join(os.getcwd(), "users")
     os.makedirs(users_dir, exist_ok=True)
     

@@ -8,16 +8,24 @@
 - As caixas de logon e registro devem ter um zindex + 1
 
 -->
+
 <body id=#TopMenu>
-  <link rel="stylesheet" href="../layouts/topMenu/topNavegationBar.css">
+
+  <head>
+    <title>PullType</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='layouts/topMenu/topNavegationBar.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css')}}">
+  </head>
+  <!-- <link rel="stylesheet" href="../layouts/topMenu/topNavegationBar.css"> -->
 
   <div class="navbar">
     <div class="logo" id="logo" onclick="goToMainPage()">
-      <img src="images/pullTypeLogo.png" alt="ToMainPage">
+      <img src="{{ url_for('static', filename='images/pullTypeLogo.png')}}" alt="ToMainPage">
+      <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
     </div>
     <nav>
 
-      <a href="createGuide.html" id="buttonCreate">Criar</a>
+      <a href="createGuide" id="buttonCreate">Criar</a>
       <a href="#guides" id="buttonGuias">Guias</a>
       <a href="#statistics" id="buttonStatistics">Estatisticas</a>
 
@@ -38,72 +46,8 @@
 
     </nav>
     <div class="buttons">
-      <a id="loginButton" href="login.html">Entrar</a>
+      <a id="loginButton" href="login">Entrar</a>
     </div>
   </div>
-
-  <!-- Login -->
-  <div id="loginpopup" class="loginpopup" style="display: none;">
-    <div class="loginBar">
-      <p class="loginCheckBox">Usuário: </p>
-      <div class="search-bar-Login">
-        <input type="text" placeholder="Usuário">
-      </div>
-      <div class="search-bar">
-        <p class="loginCheckBox">Senha: </p>
-        <input type="password" placeholder="Senha">
-      </div>
-      <div>
-        <div class="loginCheckBox">
-          <input type="checkbox" class="loginCheckBox">
-          <div class="loginCheckBox">Mantenha-me conectado</div>
-        </div>
-        <div class="button-login-div">
-          <a href="#loginSend" class="button-login-div">Login</a>
-        </div>
-        <div class="button-login-div">
-          <a href="#loginForgeted" class="button-login-div">Esqueci a senha</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Registro -->
-  <div class="register-popup" id="registerpopup" style="display:none;">
-    <div class="loginBar">
-      <p class="loginCheckBox">Usuário: </p>
-      <div class="search-bar-Login">
-        <input type="text" placeholder="Usuário">
-      </div>
-      <div class="search-bar">
-        <p class="loginCheckBox">Email </p>
-        <input type="email" placeholder="example@email.com">
-      </div>
-
-      <br>
-
-      <div class="search-bar">
-        <p class="loginCheckBox">Digite uma senha: </p>
-        <input type="password" placeholder="Senha">
-      </div>
-      <div class="search-bar">
-        <p class="loginCheckBox">Confirmar senha: </p>
-        <input type="password" placeholder="Confirmar senha">
-      </div>
-
-      <div>
-        <div class="loginCheckBox button-login-div">
-          <input type="checkbox" class="loginCheckBox">
-          <div class="loginCheckBox">
-            Li e Concordo com os<a href="#loginForgeted" class="button-login-div"> Termos De Uso </a>.
-          </div>
-
-          <div class="button-login-div">
-            <a href="register.html" class="button-login-div">Registrar</a> <!--Aumentar isso aqui!!!-->
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </div>
+  <script>includeTopMenuHTMLAjax()</script>
 </body>
