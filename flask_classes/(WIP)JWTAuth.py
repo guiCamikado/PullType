@@ -3,6 +3,7 @@
 '''
 
 import jwt
+import datetime
 key = "v#7Pq@Lz!fT9r*Wd"
 payload = {}
 
@@ -20,3 +21,25 @@ decoded = jwt.decode(encoded,
 
 teste = jwt.encode
 print(decoded)
+
+def generateLoginToken(username:str, rememberMe: bool):
+    token = jwt.encode({
+        'user': username,
+        'exp': datetime.datetime.now() + datetime.timedelta(hours= 24 * 7),
+    },)
+
+    response = make_response({"message":"apenasTestando"})
+    if rememberMe:
+        response.set_cookie('acess_token',
+                            token,
+                            httponly=True,
+                            secure=True,
+                            samesite='Lax',
+                            max_age= 24 * 60 * 60 * 365)
+    else:
+        response.set_cookie('acess_token',
+                            token,
+                            httponly=True,
+                            secure=True,
+                            samesite='Lax')
+    return response

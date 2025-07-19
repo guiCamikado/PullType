@@ -3,9 +3,10 @@
     Banco de dados e com base nisso devolve uma resposta.
 """
 
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, make_response
 import sqlite3
 import bcrypt
+from flask_classes.UserAuth import generateLoginToken
 
 UserLogin = Blueprint('UserLogin', __name__)
 
@@ -20,11 +21,14 @@ def sendLoginRequest():
     data = request.get_json()
     databaseCheckup = data.get("login")
     senha = data.get("senha")
+    rememberMe = data.get("rememberMe", False)
+    print(generateLoginToken(databaseCheckup, rememberMe))
+
     databaseCheckup = checkLogin(databaseCheckup, senha)
 
     if databaseCheckup:
         #If login is a success
-        return jsonify({"success": True}), 200
+        return generateLoginToken(databaseCheckup, rememberMe)
     else:
         #If login is unsuccessful
         return jsonify({"success": False}), 200
@@ -43,9 +47,6 @@ def checkLogin(login, senha):
 
     if result:
         stored_hash = result[0]
-        print(stored_hash)
-        print(senha)
-        print(bcrypt.checkpw(senha.encode('utf-8'), stored_hash.encode('utf-8')))
         return bcrypt.checkpw(senha.encode('utf-8'), stored_hash.encode('utf-8'))
     else:
         return False

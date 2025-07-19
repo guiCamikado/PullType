@@ -7,6 +7,7 @@
 
 <head>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css')}}">
     <script src="{{ url_for('static', filename='layouts/topMenu/menu.js') }}"></script>
 </head>
 
@@ -16,99 +17,45 @@
     <div class="user_general">
         <!-- MENU WIP -->
         <div>
-            <input type="text">
-            <select name="" id=""></select>
-            <img src="" alt="Profile">
-            <img src="" alt="Configs">
         </div>
 
         <div class="profile_picture">
             <img src="{{ url_for('static', filename=profilePicture) }}" alt="Foto do perfil">
         </div>
 
+        <div class="user_username">
+            <h1>"{{profile_data.username}}"</h1>
+        </div>
+        <div class="user_userProfile">
+            <p><b><i>@{{profile_data.username}}</i></b></p>
+        </div>
+
         <div class="user_buttons">
-            <button>Seguir</button>
+            <button>Seguir | Editar</button>
             <button>Compartilhar</button>
         </div>
 
-
-        <div class="user_username">
-            <h1>Username</h1>
-        </div>
-        <div class="user_userProfile">
-            <img src="" alt="pTypeLogo">
-        </div>
-
         <div class="user_bio">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam expedita dicta consequatur a numquam sit
-                placeat recusandae amet, officiis, illum provident aperiam qui perspiciatis nulla facere vel consectetur
-                dignissimos distinctio! Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit vero, sapiente
-                autem laborum voluptatibus provident eos enim in soluta veniam fuga, ut sunt est maiores cum ab culpa,
-                nemo temporibus? Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis, soluta.
-                Doloremque, deleniti? Esse corrupti similique eos dolores quae culpa ea incidunt facere tempore nostrum
-                architecto, dolor, nihil fugiat doloribus vero?
+            <p>
+                {{ profile_data.bio.replace('\n', '<br>') | safe }}
             </p>
         </div>
 
+        <!-- Para futuros guias -->
         <div class="user_guides" id="blocos">
+            <div class="user_guides_addIcon">
+                <img src="{{ url_for('static', filename='images/addIcon.png')}}" alt="" srcset="">
+            </div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
         </div>
 
     </div>
 </body>
-
-<script>
-    let blocos = document.getElementById("blocos")
-    for (let index = 0; index < 50; index++) {
-        blocos.innerHTML += "<div class='bloco'></div>"
-    }
-</script>
-<style>
-    h1 {
-        margin: 0%;
-        margin-top: 2%;
-    }
-
-    .profile_picture {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .profile_picture img {
-        width: 20%;
-        height: 20%;
-        border-radius: 50%;
-        border-color: rgb(0, 0, 0);
-        border-style: ridge;
-        object-fit: cover;
-    }
-    .user_buttons{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .user_username {
-        align-items: center;
-        text-align: center;
-        margin: 0px;
-    }
-
-    .user_bio {
-        margin-top: 1vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-    }
-
-    .user_userProfile {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 75%;
-        margin-top: 0%;
-    }
-</style>
 
 </html>

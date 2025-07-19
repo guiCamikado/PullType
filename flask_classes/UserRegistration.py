@@ -139,16 +139,8 @@ def returnHash(password):
 
 # Gera pastas base do user
 def generateUserPaste(user):
-    os.chdir('static')
+    base_dir = os.path.join("static", "users", user)
 
-    users_dir = os.path.join(os.getcwd(), "users")
-    os.makedirs(users_dir, exist_ok=True)
-    
-    full_path = os.path.join(users_dir, user)
-    os.makedirs(full_path, exist_ok=True)
-    
-    image_dir = os.path.join(full_path, "image")
-    os.makedirs(image_dir, exist_ok=True)
-    
-    guides_dir = os.path.join(full_path, "guides")
-    os.makedirs(guides_dir, exist_ok=True)
+    os.makedirs(os.path.join(base_dir, "image"), exist_ok=True)
+    os.makedirs(os.path.join(base_dir, "guides"), exist_ok=True)
+    os.makedirs(os.path.join(base_dir, "profile"), exist_ok=True)

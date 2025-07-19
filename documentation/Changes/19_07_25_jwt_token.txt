@@ -1,0 +1,4 @@
+19/07/25 - JWT Token
+A site that has a login should also be able to keep users logged in. In other words, I was studying how to implement cookies into my website.
+
+Without a doubt, the most significant thing I worked on was the UserAuth class. It's responsible for creating a cookie in preparation for a not-so-distant future where users will be able to create their own guides and edit their profiles.

@@ -23,11 +23,17 @@ async function submitLogin(event) {
 
     const form = document.querySelector("form");
     const inputs = form.querySelectorAll(".input");
-
+    let rememberMe = document.getElementById("checkbox_input_camp").value
+    if (rememberMe === "on") {
+        rememberMe = true
+    } else{
+        rememberMe = false
+    }
 
     const data = {
         login: inputs[0].value,
         senha: inputs[1].value,
+        rememberMe: rememberMe
     };
 
     fetch("/DBAction/sendLoginRequest", {
