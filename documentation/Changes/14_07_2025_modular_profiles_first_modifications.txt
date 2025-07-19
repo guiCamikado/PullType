@@ -1,0 +1,4 @@
+14/07/25
+I’m trying to implement something more modular and unique for each user on the website. When you open a social network like Facebook, Tinder, Pinterest, or even Steam (which isn’t the best inspiration), you end up finding content that is personalized for each account. Users may or may not be allowed to edit things like their bio, profile picture, likes, followers, etc.
+
+With that in mind, what I did last week was study and lay the groundwork for this kind of implementation. For now, I only have the URLs that point to where the files for each user should be. In the future, I plan to integrate this with JWT to validate whether someone is viewing their own profile, and—if so—allow them to edit it.
