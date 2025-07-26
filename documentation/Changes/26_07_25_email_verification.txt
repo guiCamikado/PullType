@@ -1,0 +1,6 @@
+19/07/25 - E-Mail Verification
+Today I was playing all day, so I got tired. Because of that, and since I had nothing else to do, I decided to ask my friend what part of my project I should keep working on. He suggested the email verification feature, so I worked on that.
+
+It wasn’t anything too complex — just the database sending a key when a new account is created, and then, every time someone confirms their email, the system looks for the username associated with that key and updates the confirmation status.
+
+For now, I don't see any reason to add a timer or anything like that.

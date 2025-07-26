@@ -3,6 +3,24 @@ body {
   font-family: Arial, sans-serif;
 }
 
+.navbar img {
+  align-items: center;
+  justify-content: space-between;
+  background-color: #1b1b1b;
+  color: white;
+  max-width: 40px;
+  border-radius: 50%;
+}
+.navbar img:hover {
+  align-items: center;
+  justify-content: space-between;
+  background-color: #1b1b1b;
+  color: white;
+  border-radius: 50%;
+  cursor: pointer;
+  opacity: 0.4;
+}
+
 .navbar {
   display: flex;
   align-items: center;
@@ -14,6 +32,7 @@ body {
 .logo{
   cursor: pointer;
 }
+/* WIP */
 .navbar .logo img {
   height: 40px;
 }
@@ -42,195 +61,7 @@ body {
   gap: 5px;
 }
 
-.navbar .search-bar input[type="text"] {
-  padding: 5px;
-  border: none;
-  border-radius: 5px;
-}
-
-.navbar .buttons a {
-  text-decoration: none;
-  color: white;
-  padding: 5px 10px;
-  background-color: #007BFF;
-  border-radius: 5px;
-  transition: background-color 0.3s;
-}
-
-.navbar .buttons a:hover {
-  background-color: #0056b3;
-}
-
-.loginBar {
-  background-color: #1b1b1b;
-  display: inline-block;
-  padding: 5% 5%;
-  align-items: center;
-  border-radius: 2%;
-  max-height: 100%;
-}
-
-.register-popup {
-  display: flex;
-  justify-content: center;
-  padding-top: 10%;
-  margin-bottom: 20px;
-}
-
-.loginpopup {
-  display: flex;
-  /* justify-content: end; */
-  justify-content: center;
-  padding-top: 10%;
-  margin-bottom: 20px;
-  z-index: 1;
-}
-
-
-
-.checkBox {
-  color: white;
-  padding: 0px;
-  margin: 0px;
-  font-size: 80%;
-}
-
-.loginCheckBox {
-  font-size: 80%;
-  color: white;
-  padding-top: 0%;
-  margin: 0%;
-}
-
-.loginpopup {
-  width: 300px;
-  margin: 20px auto;
-}
-
-.loginpopup input[type="text"],
-.loginpopup input[type="password"] {
-  width: 90%;
-  padding: 8px;
-  font-size: 16px;
-}
-
-.loginpopup .loginCheckBox {
-  display: inline;
-  margin-top: 10px;
-}
-
-.register-popup input[type="text"],
-.register-popup input[type="email"],
-.register-popup input[type="password"] {
-  width: 90%;
-  padding: 8px;
-  font-size: 16px;
-}
-
 .register-popup .loginCheckBox {
   display: inline;
   margin-top: 10px;
-}
-
-/* Add new styles for the checkbox itself */
-.loginCheckBox input[type="checkbox"] {
-  width: 18px;
-  /* Increase checkbox width */
-  height: 18px;
-  /* Increase checkbox height */
-  font-size: 16px;
-  /* Adjust font size if needed */
-}
-
-.button-login-div {
-  text-decoration: none;
-  font-size: 80%;
-  color: #00ff51;
-  /* padding: 0.5% 0.5%; */
-  border-radius: 5px;
-  transition: background-color 0.3s;
-  display: inline;
-  margin: 0.5%;
-}
-
-.button-login-div:hover a:hover {
-  background-color: #0056b3;
-}
-
-.teste {
-  border: 1px solid red;
-  display: inline;
-}
-
-.white-mode-switch-fitting {
-  transform: scale(1);
-}
-
-.white-mode-switch-fitting:hover {
-  background-color: #363636;
-  border-radius: 25px;
-}
-
-/* The switch - the box around the slider */
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
-  transform: scale(0.6);
-}
-
-/* Hide default HTML checkbox */
-.switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-/* The slider */
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-input:checked+.slider {
-  background-color: #2196F3;
-}
-
-input:focus+.slider {
-  box-shadow: 0 0 1px #2196F3;
-}
-
-input:checked+.slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
-}
-
-/* Rounded sliders */
-.slider.round {
-  border-radius: 34px;
-}
-
-.slider.round:before {
-  border-radius: 50%;
 }

@@ -10,4 +10,4 @@ def deleteUsername(username):
     conn.commit()
     conn.close()
     print("item deletado")
-deleteUsername("tralaleroTralala")
+deleteUsername("guilherme")

@@ -36,17 +36,9 @@
       </div>
       <a href="sobre_nos.html">Sobre nós</a>
 
-      <div class="white-mode-switch-fitting">
-        <label class="switch">
-          <input type="checkbox">
-          <span class="slider round"></span>
-        </label>
-      </div>
-
-
     </nav>
     <div class="buttons">
-      <a id="loginButton" href="login">Entrar</a>
+      <img src="{{ url_for('static', filename=userAssets.profilePicture) }}" alt="Profile">
     </div>
   </div>
   <script>includeTopMenuHTMLAjax()</script>

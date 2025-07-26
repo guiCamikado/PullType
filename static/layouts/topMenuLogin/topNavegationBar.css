@@ -3,6 +3,12 @@ body {
   font-family: Arial, sans-serif;
 }
 
+.loginController_inside {
+  justify-content: center;
+  align-items: center;
+  margin-top: 5%;
+}
+
 .navbar {
   display: flex;
   align-items: center;
@@ -11,9 +17,11 @@ body {
   padding: 10px 20px;
   color: white;
 }
-.logo{
+
+.logo {
   cursor: pointer;
 }
+
 .navbar .logo img {
   height: 40px;
 }

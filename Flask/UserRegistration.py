@@ -21,8 +21,9 @@ def sendRegistrationRequest():
     senha = data.get("senha")
     confirmar_senha = data.get("confirmarSenha")
     data_nascimento = data.get("dataNascimento")
+    token = generateRandomKey(5)
+    emailConfirmation = generateRandomKey(35)
     termos_aceitos = data.get("termosAceitos")
-    token = generateRecoveryToken()
 
     if senha != confirmar_senha:
         return jsonify({"message": "Senhas não coincidem!"}), 200
@@ -30,7 +31,7 @@ def sendRegistrationRequest():
     createTableIfNotExist()
     if checkUserValidation(usuario):
         if checkEmailValidation(email):
-            insertIntoDataBase(usuario, email, nome, sobrenome, senha, data_nascimento, token)
+            insertIntoDataBase(usuario, email, nome, sobrenome, senha, data_nascimento, token, emailConfirmation)
             generateUserPaste(usuario)
             return jsonify({"message": "Usuário registrado com sucesso!"}), 200
         
@@ -96,18 +97,19 @@ def checkEmailValidation(email):
     
     connection.close()
     return existsInDataBase
+
 # WIP essa função deverá gerar uma chave de recuperação de senha. A mesma deverá ser executada apenas se a função checkValidation retornar true
-def generateRecoveryToken():
+def generateRandomKey(length):
 
     import secrets
     import string
 
     alfabeto = string.ascii_letters + string.digits # Letras e Num
-    token = ''.join(secrets.choice(alfabeto) for _ in range(5))
+    token = ''.join(secrets.choice(alfabeto) for _ in range(length))
     return token
 
 # WIP essa função deve inserir os dados recebidos no banco de dados se todas as validações forem credenciadas.
-def insertIntoDataBase(user, email, nome, sobrenome, senha, data_nascimento, token):
+def insertIntoDataBase(user, email, nome, sobrenome, senha, data_nascimento, token, emailConfirmation):
     conn = sqlite3.connect('database.db')
     cursor = conn.cursor()
 
@@ -119,15 +121,17 @@ def insertIntoDataBase(user, email, nome, sobrenome, senha, data_nascimento, tok
             last_name,
             password,
             user_born_in,
-            recovery_key
-        ) VALUES (?, ?, ?, ?, ?, ?, ?)
+            recovery_key,
+            email_confirmed
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
     """, (  user,
             email,
             nome,
             sobrenome,
             returnHash(senha),
             data_nascimento,
-            token,))
+            token,
+            emailConfirmation,))
 
     conn.commit()
     conn.close()

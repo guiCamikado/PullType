@@ -1,0 +1,26 @@
+<!-- Guilherme Andrade Camikado 01-Dezembro 2024 -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="{{ url_for('static', filename='layouts/topMenu/menu.js') }}"></script>
+</head>
+
+<body id="mainBody">
+    {% include "layouts/topMenu/TopMenu.html" %}
+</body>
+
+<div class="confirm_emailConfirmation">
+    {{message | safe}}
+</div>
+
+<style>
+    .confirm_emailConfirmation{
+        align-items: center;
+        text-align: center;
+        margin-top: 10%;
+    }
+</style>
+
+</html>
