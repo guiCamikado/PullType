@@ -57,7 +57,7 @@ def validateToken():
     except:
         # Se a chave JWT for modificada seja por qualquer motivo como uma tentativa de falsificar a chave isso aparecer-irá
         return jsonify({"message":"the cookie 'pullType_acess_token' was modiffied and cannot be decoded because of this for more info see on UserAuth.py"})
-    
+        
 # Valida token e retorna usuário
 def returnUser():
     data = request.cookies.get('pullType_acess_token')

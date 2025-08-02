@@ -38,8 +38,62 @@
 
     </nav>
     <div class="buttons">
-      <img src="{{ url_for('static', filename=userAssets.profilePicture) }}" alt="Profile">
+      <img src="{{ url_for('static', filename=userAssets.profilePicture) }}" alt="Profile" style="cursor: pointer;"
+        id="profilePicture">
     </div>
   </div>
+
+  <!-- MENU LATERAL -->
+  <div class="dropdown-content" id="lateralMenu">
+    <li>teste</li>
+    <li>teste</li>
+    <li>teste</li>
+    <li>teste</li>
+    <li>teste</li>
+    <li>teste</li>
+    <li>teste</li>
+    <li>teste</li>
+  </div>
+
+  <style>
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 0px;
+      background-color: #1b1b1b;
+      color: white;
+      z-index: 1;
+      list-style-type: none;
+      min-width: 10vw;
+      max-width: 10vw;
+      min-height: 50vw;
+    }
+
+    .dropdown-content li {
+      margin: 10px;
+    }
+
+    .dropdown-content li:hover {
+      /* Quando mouse em cima de opção */
+      background-color: red;
+    }
+  </style>
+
+  <script>
+    const lateralMenu = document.getElementById("lateralMenu")
+    document.getElementById("profilePicture").onclick = function () {
+      console.log(lateralMenu);
+
+      if (lateralMenu.style.display === "block") {
+        lateralMenu.style.display = "none"
+      } else {
+        lateralMenu.style.display = "block"
+      }
+    };
+  </script>
+
+
   <script>includeTopMenuHTMLAjax()</script>
 </body>

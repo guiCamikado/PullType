@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css')}}">
     <script src="{{ url_for('static', filename='layouts/topMenu/menu.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/profile.js')}}"></script>
 </head>
 
 <body id="mainBody">
@@ -20,7 +21,7 @@
         </div>
 
         <div class="profile_picture">
-            <img src="{{ url_for('static', filename=profilePicture) }}" alt="Foto do perfil">
+            <img src="{{ url_for('static', filename=profilePicture) }}" alt="Foto do perfil" draggable="false">
         </div>
 
         <div class="user_username">
@@ -31,8 +32,8 @@
         </div>
 
         <div class="user_buttons">
-            <button>Seguir | Editar</button>
-            <button>Compartilhar</button>
+            {{botaoDeSeguirOuEditar | safe}}
+            <button onclick="getCurrentLink()">Compartilhar</button>
         </div>
 
         <div class="user_bio">
@@ -41,7 +42,7 @@
             </p>
         </div>
 
-        <!-- Para futuros guias -->
+        <!-- WIP Para futuros guias -->
         <div class="user_guides" id="blocos">
             <div class="user_guides_addIcon">
                 <img src="{{ url_for('static', filename='images/addIcon.png')}}" alt="" srcset="">

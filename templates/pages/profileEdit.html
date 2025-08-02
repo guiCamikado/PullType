@@ -1,0 +1,74 @@
+<!-- Guilherme Andrade Camikado 01-Dezembro 2024 -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="{{ url_for('static', filename='layouts/topMenu/menu.js') }}"></script>
+</head>
+
+<body id="mainBody">
+    {% include "layouts/topMenu/TopMenu.html" %}
+
+    <h1>WIP ESSA PÁGINA É DE EDIÇÃO DE PERFIL</h1>
+
+    <p>Tem duas maneiras de se pensar isso. A primeira é por blocos editaveis como na Steam dá mais personalidade para a
+        pessoa e tudo mais
+        A segunda mais segura, mais utilizada um esquema padronizado tipo Instagram. Da um ar mais sério mas tira um
+        pouco daquela coisa gostosa que é criar o "próprio perfil".
+    </p>
+    <p>
+    <p>
+        A ideia será a seguinte. Quando alguem for editar o perfil ela podera utilizar "Módulos"
+        Cada módulo Possuíra um tipo, que serão tipo widgets como "banco de imagens", "caixa de texto", etc.. seguindo a
+        ideia de design de guias.
+    </p>
+
+    <li>Módulos serão ilimitados</li>
+    <li>Deverá ser impossivel criar um novo módulo Se houver dentro daquele módulo um módulo sem itens dentro</li>
+    <li>Por padrão um módulo será criado automaticamente com nome ROOT esse módulo não poderá ser excluído</li>
+    <li>Módulos terão tamanho pré definido (dentre 10 a 1 n tenho certeza)</li>
+    <li>Alguns módulos terão a possibilidade de ser expandidos em uma área de até 8x5, 5x4, 4x5, 3x5 etc...</li>
+    <li>Um módulo poderá ser criado digitando "/module" dentro de um módulo ou dentro do módulo ROOT</li>
+    <li>Ao clicar em um módulo um menu deverá aparecer no canto inferior da tela</li>
+    <li>Deverá ser possivel redimensionar alguns módulos arrastando-os</li>
+
+    <p>Como será armazenado</p>
+    Um JSON deverá ser criado contendo a palavra chave root
+
+    <p><b>Em Root se tem:</b></p>
+    <li>name - Nome base do guia</li>
+    <li>dateCreated</li>
+    <li>lastModified</li>
+    <li>child - Armazena informações dos módulos dentro deste, todo submódulo que pode possuir outro submodulo possuírá
+        um</li>
+
+
+    <hr>
+
+
+    <p> Em submodules se terá:</p>
+    <li>Type - Tipo de submódulo</li>
+    <li>Configs - Configurações referentes aquele submódulo por exemplo se for um relógio se terá nele a configuração
+        do local, etc...</li>
+    <li>dimension - Dimensão em formato [X, Y] do módulo, se outro módulo de tamanho X ou Y igual ou superior não
+        poderá ser criado nesse submódulo</li>
+    <li>child </li>
+    </p>
+
+
+    <hr>
+
+
+    <p>To Do:</p>
+    <li>Sistema para criar um novo guia</li>
+    <li>Sistema para inserir um módulo dentro do módulo raiz</li>
+    <li>Sistema para impedir a inserção de módulos maiores ou iguais ao módulo pai</li>
+    <li>Sistema que limita com base em módulos existentes a inserção em campos preenchidos de módulos maiores ou iguais ao módulo pai</li>
+    <li>Sistema que permite o redimensionamento de módulos presentes</li>
+
+    <hr>
+
+</body>
+
+</html>

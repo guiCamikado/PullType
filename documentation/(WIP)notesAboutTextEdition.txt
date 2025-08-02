@@ -1,0 +1,34 @@
+Aqui estará anotado a lógica utilizada para a edição de texto.
+Em resumo desejo algo perto do markdown para textos com algum tipo de auto preencher como em apps de notação tipo notion.
+
+Sempre que um usuário entrar ele deverá primeiro configurar o guia com os campos:
+- Nome do guia
+- Imagem do guia
+- 
+
+Por de trás dos panos cada guia deverá conter no banco de dados os seguintes valores:
+
+- ID
+- Titulo
+- Autor
+- Colaboradores
+- tipo_acesso -> publico, privado
+- DataCriacao
+- Visitas
+- Sinopse / Resumo simples
+- Tags
+
+
+---------//-------------
+
+- Cada PALAVRA será passivel de edição
+- Cada PARÁGRAFO será passivel de ser arrastado em ordem ou Editado
+
+    Dentre edição de palavras se tem:
+    - Alterar cores de texto
+    - Alterar cores do plano de fundo
+    - Bold, Italic, Grifado, Strong
+
+    Dentre edição de Parágrafos se tem
+    - Tornar em title
+    - Tornar em List
