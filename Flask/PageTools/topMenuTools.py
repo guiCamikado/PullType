@@ -1,5 +1,7 @@
+"Referente a ferramentas de uso do menu superior"
+
 def getUserProfilePicture():
-    from Flask import JWTAuth as JWTAuth
+    from Flask.PageTools import JWTAuth as JWTAuth
     import os
 
     username = JWTAuth.returnUser()

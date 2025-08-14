@@ -4,8 +4,8 @@ Esta página serve para gerar URLs acessiveis ao usuário pela
 """
 import os
 from flask import Blueprint, render_template, send_from_directory, abort, request, jsonify
-from Flask import JWTAuth as JWTAuth
-import topMenuTools as topMenuTools
+from Flask.PageTools import JWTAuth as JWTAuth
+from Flask.PageTools import topMenuTools as topMenuTools
 import json
 
 pages = Blueprint('flask_pages', __name__)

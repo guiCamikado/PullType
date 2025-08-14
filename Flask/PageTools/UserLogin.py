@@ -6,7 +6,7 @@
 from flask import Blueprint, request, jsonify, make_response
 import sqlite3
 import bcrypt
-import Flask.JWTAuth as JWTAuth
+import Flask.PageTools.JWTAuth as JWTAuth
 
 UserLogin = Blueprint('UserLogin', __name__)
 

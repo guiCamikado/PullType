@@ -7,6 +7,9 @@
 from datetime import datetime
 import os
 import json
+from PageTools import JWTAuth
+
+# Para criação de um novo guia
 def createModuleRoot(guideName, username, language):
     path = None
 
@@ -33,8 +36,6 @@ def createModuleRoot(guideName, username, language):
     except:
         # WIP Criar mensagem de erro que retorne ao fontEnd
         return print("error User not exist")
-
-
 def createNewGuideFolder(username, guideName):
     #Vai até a pasta guia
     # Verifica se existe guia com mesmo nome
@@ -54,4 +55,25 @@ def createNewGuideFolder(username, guideName):
     # WIP implementar resposta ao front ou retornar algo
     return True
 
-createModuleRoot("precisoCorrigirCaracteresEspeciais", "testUser", "pt-br")
+# Para a criação de um submódulo
+def createNewSubmodule(guideName):
+    # Para criar um novo submódulo primeiro é necessário obter o guia
+    # Depois é necessário obter o usuário que está tentando editar o guia e com isso verificar se o mesmo pode faze-lo
+    # 
+    return ""
+
+# Confere se usuário possuí autorização de edição
+def checkUserAuth(username, guideName):
+    print("TESTE")
+    print("TESTE")
+    print("TESTE")
+    print("TESTE")
+    # Obtem endereço do arquivo root do guia
+    path = os.path.join('static', 'users', username, 'guides', guideName, 'guide')
+    
+    user = username # Provisório
+    if (user == username):
+        print("Foi")
+
+# createModuleRoot("precisoCorrigirCaracteresEspeciais", "testUser", "pt-br")
+checkUserAuth("testUse", "precisoCorrigirCaracteresEspeciais")

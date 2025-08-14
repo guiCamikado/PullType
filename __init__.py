@@ -3,18 +3,23 @@ from flask import Flask
 app = Flask(__name__, static_folder="static")
 
 #Registra módulos vindos de outras páginas
-from Flask.Flask_Pages import pages
+from Flask.PageTools.Flask_Pages import pages
 app.register_blueprint(pages)
 
-from Flask.UserRegistration import UserRegistration
+from Flask.PageTools.UserRegistration import UserRegistration
 app.register_blueprint(UserRegistration)
 
-from Flask.UserLogin import UserLogin
+from Flask.PageTools.UserLogin import UserLogin
 app.register_blueprint(UserLogin)
 
-from Flask.verifyToken import verifyToken
+from Flask.PageTools.verifyToken import verifyToken
 app.register_blueprint(verifyToken)
 
 
 if __name__ == '__main__':
     app.run(debug=True)
+    
+### TESTING TESTINGTESTING TESTINGTESTING TESTINGTESTING TESTINGTESTING TESTINGTESTING TESTINGTESTING TESTING
+# from Flask.ModulesSys import ModelCrud
+# test = ModelCrud
+# test.checkUserAuth("testUse", "precisoCorrigirCaracteresEspeciais")
