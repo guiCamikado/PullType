@@ -66,10 +66,6 @@ def getImages(path):
 def goToProfile(username):
     profile_path = os.path.join('static', 'users', username, 'profile', 'profile.json')
     loginCookie = JWTAuth.returnUser()
-    print(loginCookie)
-    print(loginCookie)
-    print(loginCookie)
-    print(loginCookie)
     botaoDeSeguirOuEditar = "<button>Seguir</button>"
     if username == loginCookie:
         botaoDeSeguirOuEditar = "<button onclick='goToProfileEditor()'>Editar</button>"
@@ -80,9 +76,19 @@ def goToProfile(username):
         return f"User profile '{username}' not found.", 404
     except json.JSONDecodeError:
         return f"Invalid JSON for user '{username}'.", 500
-
+    
+    
+    imagePath = topMenuTools.getUserProfilePicture()
+    imgTypes = ["png","jpg","jpeg","gif","bmp"]
+    for i in imgTypes:
+        try:
+            with open(f'static/users/{username}/image/profilePicture.{i}', 'rb') as img:
+                imagePath = f'users/{username}/image/profilePicture.{i}'
+            break
+        except:
+            continue            
     itensToSend = {
-        'profilePicture': f'users/{username}/image/profilePicture.png', #Tratar isso para aceitar tanto png, jpeg, jpg e gif
+        'profilePicture': imagePath,
         'profile_data': profile_data,
         'botaoDeSeguirOuEditar': botaoDeSeguirOuEditar
     }

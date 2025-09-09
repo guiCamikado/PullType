@@ -1,5 +1,5 @@
-# __init__.py
 from flask import Flask
+
 app = Flask(__name__, static_folder="static")
 
 #Registra módulos vindos de outras páginas
@@ -15,11 +15,5 @@ app.register_blueprint(UserLogin)
 from Flask.PageTools.verifyToken import verifyToken
 app.register_blueprint(verifyToken)
 
-
 if __name__ == '__main__':
     app.run(debug=True)
-    
-### TESTING TESTINGTESTING TESTINGTESTING TESTINGTESTING TESTINGTESTING TESTINGTESTING TESTINGTESTING TESTING
-# from Flask.ModulesSys import ModelCrud
-# test = ModelCrud
-# test.checkUserAuth("testUse", "precisoCorrigirCaracteresEspeciais")
